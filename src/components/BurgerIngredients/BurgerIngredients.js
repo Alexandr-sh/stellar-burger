@@ -10,8 +10,6 @@ class BurgerIngredients extends React.Component {
         this.state = {
             current: "Булки"
         }
-        console.log("props.data");
-        console.log(props.data);
     }
     setCurrent = () => {
     };
@@ -44,7 +42,7 @@ class BurgerIngredients extends React.Component {
             <div className={styles.ingridientsList} >
             {this.props.data.map((ingridient, index)=>(
                 ingridient.type === "sauce" ? (
-                    <ListItem data={ingridient} key={ingridient._id}/>
+                    <ListItem data={ingridient} key={ingridient._id} addIngridient = {this.props.addIngridient}/>
                   ) : (
                     null
                   )
@@ -54,7 +52,7 @@ class BurgerIngredients extends React.Component {
             <div className={styles.ingridientsList} >
             {this.props.data.map((ingridient, index)=>(
                 ingridient.type === "main" ? (
-                    <ListItem data={ingridient} key={ingridient._id}/>
+                    <ListItem data={ingridient} key={ingridient._id} addIngridient = {this.props.addIngridient}/>
                   ) : (
                     null
                   )

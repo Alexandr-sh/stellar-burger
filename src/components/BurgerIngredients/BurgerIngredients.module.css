@@ -1,8 +1,9 @@
 .burgerIngridients {
-    max-width: 615px;
+    width: 615px;
     max-height: calc(100vh - 128px);
     display: flex;
     flex-direction: column;
+    gap: 16px;
     overflow: auto;
 }
 

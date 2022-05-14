@@ -43,8 +43,6 @@ const App = () => {
         }
       }).then(res => checkApiError(res))
       const serverData = await res.json();
-      console.log("serverData.data");
-      console.log(serverData.data);
       setState({ dataB: serverData.data, loading: false });
     }
     getProductData();
@@ -52,7 +50,6 @@ const App = () => {
 
   const addIngridient = (id) => {
     const newData = [...state.dataB];
-    console.log(newData);
     newData.forEach((item) => {
       if (item._id === id) item.__v +=1;
     })
@@ -65,7 +62,7 @@ const App = () => {
       <AppHeader />
       <div className={styles.content}>
         {!state.loading && <BurgerIngredients data={state.dataB} addIngridient = {addIngridient}/>}
-        {!state.loading && <BurgerConstructor />}
+        {!state.loading && <BurgerConstructor data={state.dataB}/>}
       </div>
     </div>
   )

@@ -4,22 +4,29 @@ import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-comp
 
 
 class BurgerConstructor extends React.Component {
+    constructor(props) {
+        super(props);
+        const newData = props.data.filter(item => item.__v > 0);
+        this.state = { data: newData };
+        console.log(props.data[0].__v);
+    }
     render() {
         return <div className={styles.burgerConstructor}>
-            <ConstructorElement
-                type="top"
-                isLocked={true}
-                text="Краторная булка N-200i (верх)"
-                price={200}
-                thumbnail="https://code.s3.yandex.net/react/code/meat-04.png"
-            />
-            <ConstructorElement
-                type="top"
-                isLocked={true}
-                text="Краторная булка N-200i (верх)"
-                price={200}
-                thumbnail="https://code.s3.yandex.net/react/code/meat-04.png"
-            />
+            {
+                this.props.data.map((ingridient, index) => (
+                    ingridient.__v > 0 ? (
+                        <ConstructorElement
+                            isLocked={false}
+                            text={ingridient.name}
+                            price={ingridient.price}
+                            thumbnail={ingridient.image}
+                            key={ingridient._id}
+                        />
+                    ) : (
+                        null
+                    )
+                ))
+            }
         </div>;
     }
 }
