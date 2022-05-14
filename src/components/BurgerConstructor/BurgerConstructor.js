@@ -10,11 +10,21 @@ class BurgerConstructor extends React.Component {
         this.state = { data: newData };
         console.log(props.data[0].__v);
     }
+
+    getData(){
+        this.data = [];
+        this.props.data.forEach(element => {
+            if (element.__v > 0) {
+                for (let i = 0; i < element.__v; i++) this.data.push(element)
+            }
+        });
+    }
+
     render() {
+        this.getData();
         return <div className={styles.burgerConstructor}>
             {
-                this.props.data.map((ingridient, index) => (
-                    ingridient.__v > 0 ? (
+                this.data.map((ingridient, index) => (
                         <ConstructorElement
                             isLocked={false}
                             text={ingridient.name}
@@ -22,11 +32,8 @@ class BurgerConstructor extends React.Component {
                             thumbnail={ingridient.image}
                             key={ingridient._id}
                         />
-                    ) : (
-                        null
-                    )
                 ))
-            }
+                }
         </div>;
     }
 }
