@@ -5,6 +5,7 @@ import { Typography } from '@ya.praktikum/react-developer-burger-ui-components'
 
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients'
+import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 
 const url = 'https://norma.nomoreparties.space/api/ingredients';
 
@@ -56,6 +57,7 @@ const App = () => {
       <AppHeader />
       <div className={styles.content}>
         {!state.loading && <BurgerIngredients data = {state.dataB}/>}
+        {!state.loading && <BurgerConstructor />}
       </div>
     </div>
   )
