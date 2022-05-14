@@ -1,7 +1,22 @@
 .burgerIngridients {
-    max-width: 600px;
+    max-width: 615px;
+    max-height: calc(100vh - 128px);
     display: flex;
     flex-direction: column;
+    overflow: auto;
+}
+
+.burgerIngridients::-webkit-scrollbar {
+    width: 10px;
+    background-color: #2F2F37;
+}
+
+.burgerIngridients::-webkit-scrollbar-button {
+    background-color:  rgba(0,0,0,0);
+}
+
+.burgerIngridients::-webkit-scrollbar-thumb {
+    background-color: #8585AD
 }
 
 .title {
