@@ -34,7 +34,7 @@ class BurgerIngredients extends React.Component {
             <div className={styles.ingridientsList} >
             {this.props.data.map((ingridient, index)=>(
                 ingridient.type === "bun" ? (
-                    <ListItem data={ingridient} key={ingridient._id}/>
+                    <ListItem data={ingridient} key={ingridient._id} addIngridient = {this.props.addIngridient}/>
                   ) : (
                     null
                   )

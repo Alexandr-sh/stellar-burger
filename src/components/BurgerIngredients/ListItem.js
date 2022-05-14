@@ -10,19 +10,16 @@ import PropTypes from 'prop-types';
 class ListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {count:0};
     }
 
     onHeadingClick = () => {
-        this.setState({count: this.state.count+1});
+        this.props.addIngridient(this.props.data._id);
       }
 
-    setCurrent = () => {
-    };
     render() {
         return <div className={styles.listItem} onClick={this.onHeadingClick}>
-            {this.state.count > 0 ? (
-                <Counter count={this.state.count} size="default" />
+            {this.props.data.__v > 0 ? (
+                <Counter count={this.props.data.__v} size="default" />
             ) : null}
             <img src={this.props.data.image} className={styles.image} />
             <div className={styles.price}>

@@ -48,15 +48,23 @@ const App = () => {
       setState({ dataB: serverData.data, loading: false });
     }
     getProductData();
-    console.log("state.dataB");
-    console.log(state.dataB);
-  },[])
+  }, [])
+
+  const addIngridient = (id) => {
+    const newData = [...state.dataB];
+    console.log(newData);
+    newData.forEach((item) => {
+      if (item._id === id) item.__v +=1;
+    })
+
+    setState({dataB:newData});
+  }
 
   return (
     <div className={`${styles.App} text text_type_main-default`}>
       <AppHeader />
       <div className={styles.content}>
-        {!state.loading && <BurgerIngredients data = {state.dataB}/>}
+        {!state.loading && <BurgerIngredients data={state.dataB} addIngridient = {addIngridient}/>}
         {!state.loading && <BurgerConstructor />}
       </div>
     </div>
