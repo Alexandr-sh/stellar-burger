@@ -10,36 +10,6 @@ class BurgerIngredients extends React.Component {
         this.state = {
             current: "Булки"
         }
-        this.buns = [
-            {
-                "_id":"60666c42cc7b410027a1a9b1",
-                "name":"Краторная булка N-200i",
-                "type":"bun",
-                "proteins":80,
-                "fat":24,
-                "carbohydrates":53,
-                "calories":420,
-                "price":1255,
-                "image":"https://code.s3.yandex.net/react/code/bun-02.png",
-                "image_mobile":"https://code.s3.yandex.net/react/code/bun-02-mobile.png",
-                "image_large":"https://code.s3.yandex.net/react/code/bun-02-large.png",
-                "__v":0
-               },
-               {
-                "_id":"60666c42cc7b410027a1a9b2",
-                "name":"Флюоресцентная булка R2-D3",
-                "type":"bun",
-                "proteins":44,
-                "fat":26,
-                "carbohydrates":85,
-                "calories":643,
-                "price":988,
-                "image":"https://code.s3.yandex.net/react/code/bun-01.png",
-                "image_mobile":"https://code.s3.yandex.net/react/code/bun-01-mobile.png",
-                "image_large":"https://code.s3.yandex.net/react/code/bun-01-large.png",
-                "__v":0
-               }
-        ]
     }
     setCurrent = () => {
     };
@@ -59,13 +29,19 @@ class BurgerIngredients extends React.Component {
                 </Tab>
             </div>
             <h3 className={`${styles.title} text text_type_main-medium`}>Булки</h3>
-            <div className={styles.ingridientsList}>
-            {this.buns.map((ingridient, index)=>(
-                <ListItem data={ingridient}/>
-                ))}
+            <div className={styles.ingridientsList} >
+            {this.props.data.map((ingridient, index)=>(
+                (ingridient.type === "bun") ? (
+                    <ListItem data={ingridient} key={ingridient._id}/>
+                  ) : (
+                    null
+                  )
+            ))}
             </div>
         </div>;
     }
 }
 
 export default BurgerIngredients;
+
+/*<ListItem data={ingridient} key={ingridient._id}/>*/

@@ -1,6 +1,8 @@
 .listItem {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .image {
@@ -8,7 +10,11 @@
     margin-bottom: 4px;
 }
 
-.counter {
+.price {
     display: flex;
     margin-top: 4px;
+}
+
+.value {
+    margin-right: 9px;
 }
