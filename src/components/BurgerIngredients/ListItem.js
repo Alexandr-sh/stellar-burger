@@ -14,6 +14,7 @@ class ListItem extends React.Component {
                 <div className={`text text_type_digits-default ${styles.value}`}>{this.props.data.price}</div>
                 <CurrencyIcon type="primary"/>
             </div>
+            <div className={styles.name}>1234</div>
         </div>;
     }
 }

@@ -10,6 +10,8 @@ class BurgerIngredients extends React.Component {
         this.state = {
             current: "Булки"
         }
+        console.log("props.data");
+        console.log(props.data);
     }
     setCurrent = () => {
     };
@@ -31,12 +33,12 @@ class BurgerIngredients extends React.Component {
             <h3 className={`${styles.title} text text_type_main-medium`}>Булки</h3>
             <div className={styles.ingridientsList} >
             {this.props.data.map((ingridient, index)=>(
-                (ingridient.type === "bun") ? (
+                ingridient.type === "bun" ? (
                     <ListItem data={ingridient} key={ingridient._id}/>
                   ) : (
                     null
                   )
-            ))}
+                  ))}
             </div>
         </div>;
     }

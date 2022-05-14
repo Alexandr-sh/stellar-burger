@@ -40,18 +40,22 @@ const App = () => {
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(res => checkApiError(res));
-      const data = await res.json();
-      setState({ dataB: data.data, loading: false });
+      }).then(res => checkApiError(res))
+      const serverData = await res.json();
+      console.log("serverData.data");
+      console.log(serverData.data);
+      setState({ dataB: serverData.data, loading: false });
     }
     getProductData();
+    console.log("state.dataB");
+    console.log(state.dataB);
   },[])
 
   return (
     <div className={`${styles.App} text text_type_main-default`}>
       <AppHeader />
       <div className={styles.content}>
-        <BurgerIngredients data = {state.dataB}/>
+        {!state.loading && <BurgerIngredients data = {state.dataB}/>}
       </div>
     </div>
   )
