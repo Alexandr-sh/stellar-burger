@@ -1,0 +1,14 @@
+.listItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    width: 240px;
+    margin-bottom: 4px;
+}
+
+.counter {
+    display: flex;
+    margin-top: 4px;
+}
