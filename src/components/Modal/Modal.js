@@ -7,33 +7,31 @@ const Modal = WrappedComponent => {
             this.state = {
                 isOpened: true
             }
-            console.log("modal");
         }
 
-        close() {
-            console.log('close');
+        close = () => {
             this.setState({
                 isOpened: false
             })
-        }
+        };
 
-        open() {
+        open = () => {
             this.setState({
                 isOpened: true
             })
-        }
+        };
 
         render() {
             return (
-                <WrappedComponent 
+                <WrappedComponent
                     {...this.props}
                     close={this.close}
                     open={this.open}
-                    isOpened={this.state.isisOpened}
+                    isOpened={this.state.isOpened}
                 />
             )
         }
     }
 };
-  
-  export default Modal;
+
+export default Modal;
