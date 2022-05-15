@@ -6,19 +6,27 @@ import { Typography } from '@ya.praktikum/react-developer-burger-ui-components'
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
+import Modal from '../Modal/Modal';
+import IngredientDetails from '../IngredientDetails/IngredientDetails';
+
+
+const IngredientModal = Modal(IngredientDetails);
+const initiaIngridientData = {
+  "_id":"60666c42cc7b410027a1a9b5",
+  "name":"Говяжий метеорит (отбивная)",
+  "type":"main",
+  "proteins":800,
+  "fat":800,
+  "carbohydrates":300,
+  "calories":2674,
+  "price":3000,
+  "image":"https://code.s3.yandex.net/react/code/meat-04.png",
+  "image_mobile":"https://code.s3.yandex.net/react/code/meat-04-mobile.png",
+  "image_large":"https://code.s3.yandex.net/react/code/meat-04-large.png",
+  "__v":0
+ };
 
 const url = 'https://norma.nomoreparties.space/api/ingredients';
-
-/*class App extends React.Component {
-    render() {
-      return <div className={ `${styles.App} text text_type_main-default` }>
-          <AppHeader />
-          <div className={styles.content}>
-            <BurgerIngredients />
-          </div>
-      </div>;
-    }
-} */
 
 function checkApiError(res) {
   if (res.ok) {
@@ -64,6 +72,7 @@ const App = () => {
         {!state.loading && <BurgerIngredients data={state.dataB} addIngridient = {addIngridient}/>}
         {!state.loading && <BurgerConstructor data={state.dataB}/>}
       </div>
+      <IngredientModal data = {initiaIngridientData}/>
     </div>
   )
 }

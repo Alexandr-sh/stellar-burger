@@ -1,0 +1,53 @@
+.ingredientDetails{
+    padding: 40px 40px 60px 40px;
+    width: 720px;
+    height: 718px;
+    background: #1C1C21;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.button {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+.header {
+    margin: 0;
+}
+
+.img {
+    margin-top: 1px;
+    width: 480px;
+}
+
+.name {
+    margin: 0;
+    margin-top: 16px;
+}
+
+.specs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.spec {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.spec:first-child {
+    margin-left: 0;
+}
+
+.specName {
+
+}
+
+.specCount {
+}
