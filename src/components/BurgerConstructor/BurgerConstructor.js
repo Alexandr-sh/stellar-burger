@@ -24,11 +24,15 @@ class BurgerConstructor extends React.Component {
         });
     }
 
+    onClickq = () => {
+        console.log("click");
+    }
+
 
 
     render() {
         this.updateData();
-        return <div className={styles.burgerConstructor} onClick={this.handleButtonClick}>
+        return <div className={styles.burgerConstructor} onClick={this.onClickq}>
             {
                 this.data.map((ingridient, index) => (
                     <ConstructorElement
@@ -37,6 +41,7 @@ class BurgerConstructor extends React.Component {
                         price={ingridient.price}
                         thumbnail={ingridient.image}
                         key={ingridient._id + index}
+                        onClick={this.onHeadingClick}
                     />
                 ))
             }
