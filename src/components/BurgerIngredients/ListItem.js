@@ -13,8 +13,10 @@ class ListItem extends React.Component {
     }
 
     onHeadingClick = () => {
-        this.props.addIngridient(this.props.data._id);
+        this.props.addIngridient(this.props.data);
       }
+
+
 
     render() {
         return <div className={styles.listItem} onClick={this.onHeadingClick}>

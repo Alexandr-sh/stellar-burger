@@ -28,7 +28,7 @@ class BurgerConstructor extends React.Component {
 
     render() {
         this.updateData();
-        return <div className={styles.burgerConstructor}>
+        return <div className={styles.burgerConstructor} onClick={this.handleButtonClick}>
             {
                 this.data.map((ingridient, index) => (
                     <ConstructorElement
@@ -36,13 +36,13 @@ class BurgerConstructor extends React.Component {
                         text={ingridient.name}
                         price={ingridient.price}
                         thumbnail={ingridient.image}
-                        key={ingridient._id+index}
+                        key={ingridient._id + index}
                     />
                 ))
             }
             <div className={styles.footer}>
                 <div className={`${styles.totalPrice} text text_type_digits-medium`}>{this.totalPrice}</div>
-                <CurrencyIcon type="primary"/>
+                <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`}>Оформить заказ</button>
             </div>
         </div>;

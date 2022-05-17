@@ -5,7 +5,7 @@ const Modal = WrappedComponent => {
         constructor(props) {
             super(props);
             this.state = {
-                isOpened: true
+                isOpened: props.isOpened
             }
         }
 

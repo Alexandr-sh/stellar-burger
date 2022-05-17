@@ -5,6 +5,7 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 class IngredientDetails extends React.Component {
     render() {
+        console.log(this.props.isOpened);
         return (<>
             {this.props.isOpened && (<>
                 <div className={styles.container}>
