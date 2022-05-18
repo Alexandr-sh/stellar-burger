@@ -12,14 +12,14 @@ class ListItem extends React.Component {
         super(props);
     }
 
-    onHeadingClick = () => {
+    handleClick = () => {
         this.props.addIngridient(this.props.data);
       }
 
 
 
     render() {
-        return <div className={styles.listItem} onClick={this.onHeadingClick}>
+        return <div className={styles.listItem} onClick={this.handleClick}>
             {this.props.data.__v > 0 ? (
                 <Counter count={this.props.data.__v} size="default" />
             ) : null}

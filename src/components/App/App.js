@@ -14,7 +14,6 @@ const url = 'https://norma.nomoreparties.space/api/ingredients';
 
 const IngredientModal = Modal(IngredientDetails);
 
-const defaultBun = "60666c42cc7b410027a1a9b5";
 
 function checkApiError(res) {
   if (res.ok) {
@@ -25,7 +24,7 @@ function checkApiError(res) {
 
 const App = () => {
   const [state, setState] = React.useState({
-    dataB: null,
+    data: null,
     loading: true,
     bun: "60666c42cc7b410027a1a9b5"
   })
@@ -38,31 +37,53 @@ const App = () => {
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(res => checkApiError(res))
+      }).then(res => checkApiError(res)).catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
       const serverData = await res.json();
-      setState({ dataB: serverData.data, loading: false, bun: defaultBun});
+      let initialBun = {};
+      for (let i=0; i<serverData.data.length; ++i){
+        if (serverData.data[i].type === "bun"){
+          serverData.data[i].__v=2;
+          initialBun = serverData.data[i];
+          break;
+        }
+      }
+      setState({ data: serverData.data, loading: false, bun: initialBun });
     }
     getProductData();
   }, [])
 
-  const addIngridient = (id) => {
-    const newData = [...state.dataB];
-    newData.forEach((item) => {
-      if (item._id === id) item.__v +=1;
-    })
-    setState({dataB:newData, bun:state.bun});
+  const selectBun = (bun) => {
+    if (bun._id !== state.bun._id) {
+      const newData = [...state.data];
+      newData.forEach((item) => {
+        if (item._id === bun._id) item.__v = 2;
+        if (item._id === state.bun._id) item.__v = 0;
+      })
+      setState(prevState => ({...prevState, bun:bun, data: newData}));
+    }
   }
 
-  const selectBun = (id) => {
-    setState({bun: "60666c42cc7b410027a1a9b2"})
+  const addIngridient = (ingr) => {
+    if (ingr.type === "bun") {
+      selectBun(ingr);
+    }
+    else {
+      const newData = [...state.data];
+      newData.forEach((item) => {
+        if (item._id === ingr._id) item.__v += 1;
+      })
+      setState(prevState => ({...prevState, data: newData}));
+    }
   }
 
   return (
     <div className={`${styles.App} text text_type_main-default`}>
       <AppHeader />
       <div className={styles.content}>
-        {!state.loading && <BurgerIngredients data={state.dataB} addIngridient = {addIngridient}/>}
-        {!state.loading && <BurgerConstructor data={state.dataB} />}
+        {!state.loading && <BurgerIngredients data={state.data} addIngridient={addIngridient} />}
+        {!state.loading && <BurgerConstructor data={state.data} bun={state.bun}/>}
       </div>
     </div>
   )
