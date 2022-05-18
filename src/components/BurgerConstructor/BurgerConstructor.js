@@ -5,6 +5,8 @@ import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components
 
 
 class BurgerConstructor extends React.Component {
+    state = {ingrFormIsOpened: false};
+
     updateData() {
         this.data = [];
         this.totalPrice = this.props.bun.price*2;
@@ -18,13 +20,10 @@ class BurgerConstructor extends React.Component {
         });
     }
 
-    handleClick = () => {
-
-    }
 
     render() {
         this.updateData();
-        return <div className={styles.burgerConstructor}>
+        return <div className={styles.burgerConstructor} >
             <ConstructorElement
                 type="top"
                 isLocked={true}
@@ -32,7 +31,6 @@ class BurgerConstructor extends React.Component {
                 price={this.props.bun.price}
                 thumbnail={this.props.bun.image}
                 key={this.props.bun._id}
-                onClick={this.handleClick}
             />
             {
                 this.data.map((ingridient, index) => (
@@ -42,7 +40,6 @@ class BurgerConstructor extends React.Component {
                         price={ingridient.price}
                         thumbnail={ingridient.image}
                         key={index}
-                        onClick={this.handleClick}
                     />
                 ))
             }
@@ -53,7 +50,6 @@ class BurgerConstructor extends React.Component {
                 price={this.props.bun.price}
                 thumbnail={this.props.bun.image}
                 key={this.props.bun._id+1}
-                onClick={this.handleClick}
             />
             <div className={styles.footer}>
                 <div className={`${styles.totalPrice} text text_type_digits-medium`}>{this.totalPrice}</div>
