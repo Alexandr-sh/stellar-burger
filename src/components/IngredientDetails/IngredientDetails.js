@@ -6,9 +6,9 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 class IngredientDetails extends React.Component {
     render() {
         return (<>
-            {this.props.isOpened && (<>
+            {this.props.isOpened && (
                 <div className={styles.container}>
-                <ModalOverlay closeModal = {this.props.close}/>
+                    <ModalOverlay closeModal={this.props.close} />
                     <div className={styles.ingredientDetails}>
                         <button className={styles.button} onClick={this.props.close}><CloseIcon type="primary" /></button>
                         <h2 className={`${styles.header} text text_type_main-large`}>Детали ингридиента</h2>
@@ -34,7 +34,6 @@ class IngredientDetails extends React.Component {
                         </div>
                     </div>
                 </div>
-            </>
             )}
         </>)
     }

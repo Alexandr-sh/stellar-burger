@@ -3,6 +3,7 @@ import styles from './BurgerIngredients.module.css';
 import { Typography } from '@ya.praktikum/react-developer-burger-ui-components'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import ListItem from './ListItem.js';
+import IngredientDetails from '../IngredientDetails/IngredientDetails';
 
 
 
@@ -10,11 +11,19 @@ class BurgerIngredients extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            current: "Булки"
+            current: "Булки",
+            ingrFormIsOpened: false,
+            selectedIngridient: null
         }
     }
     setCurrent = () => {
     };
+
+    selectIngridient = (data) => {
+        this.setState(prevState => ({...prevState, selectedIngridient:data, ingrFormIsOpened: true}));
+        this.props.addIngridient(data);
+    }
+
 
     render() {
         return <div className={styles.burgerIngridients}>
@@ -34,7 +43,7 @@ class BurgerIngredients extends React.Component {
             <div className={styles.ingridientsList} >
                 {this.props.data.map((ingridient, index) => (
                     ingridient.type === "bun" ? (
-                        <ListItem data={ingridient} key={ingridient._id} addIngridient={this.props.addIngridient}/>
+                        <ListItem data={ingridient} key={ingridient._id} selectIngridient={this.selectIngridient}/>
                     ) : (
                         null
                     )
@@ -44,7 +53,7 @@ class BurgerIngredients extends React.Component {
             <div className={styles.ingridientsList} >
                 {this.props.data.map((ingridient, index) => (
                     ingridient.type === "sauce" ? (
-                        <ListItem data={ingridient} key={ingridient._id} addIngridient={this.props.addIngridient}/>
+                        <ListItem data={ingridient} key={ingridient._id} selectIngridient={this.selectIngridient}/>
                     ) : (
                         null
                     )
@@ -54,12 +63,13 @@ class BurgerIngredients extends React.Component {
             <div className={styles.ingridientsList} >
                 {this.props.data.map((ingridient, index) => (
                     ingridient.type === "main" ? (
-                        <ListItem data={ingridient} key={ingridient._id} addIngridient={this.props.addIngridient}/>
+                        <ListItem data={ingridient} key={ingridient._id} selectIngridient={this.selectIngridient}/>
                     ) : (
                         null
                     )
                 ))}
             </div>
+            <IngredientDetails data = {this.state.selectedIngridient} isOpened = {this.state.ingrFormIsOpened}/>
         </div>;
     }
 }

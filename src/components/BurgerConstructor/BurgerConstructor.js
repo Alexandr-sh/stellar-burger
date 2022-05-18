@@ -5,7 +5,6 @@ import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components
 
 
 class BurgerConstructor extends React.Component {
-    state = {ingrFormIsOpened: false};
 
     updateData() {
         this.data = [];

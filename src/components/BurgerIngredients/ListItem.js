@@ -13,7 +13,7 @@ class ListItem extends React.Component {
     }
 
     handleClick = () => {
-        this.props.addIngridient(this.props.data);
+        this.props.selectIngridient(this.props.data);
       }
 
 
