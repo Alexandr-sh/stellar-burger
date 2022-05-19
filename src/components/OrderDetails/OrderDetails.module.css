@@ -1,6 +1,6 @@
-.ingredientDetails{
+.orderDetails{
     position: absolute;
-    padding: 40px 40px 60px 40px;
+    padding: 120px 40px 60px 120px;
     width: 720px;
     background: #1C1C21;
     border-radius: 40px;
@@ -21,48 +21,37 @@
     align-items: center;
 }
 
+.header {
+    margin: 0;
+    
+}
+
 .button {
     background-color: rgba(0,0,0,0);
     border: 0;
     position: absolute;
-    top: 50px;
+    top: 60px;
     right: 40px;
 }
 
-.header {
+.subHeading{
     margin: 0;
-}
-
-.img {
-    margin-top: 1px;
-    width: 480px;
-}
-
-.name {
-    margin: 0;
-    margin-top: 16px;
-}
-
-.specs {
-    display: flex;
-    justify-content: space-between;
     margin-top: 32px;
-}
-
-.spec {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    align-items: center;
-}
-
-.spec:first-child {
-    margin-left: 0;
-}
-
-.specName {
 
 }
 
-.specCount {
+.doneImg{
+    margin: 0;
+    margin-top: 60px;
+    height: 120px;
+}
+
+.status{
+    margin: 0;
+    margin-top: 60px;
+}
+
+.statusDescr{
+    margin: 0;
+    margin-top: 8px;
 }

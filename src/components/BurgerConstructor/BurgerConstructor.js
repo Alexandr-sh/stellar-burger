@@ -2,9 +2,17 @@ import React from 'react';
 import styles from './BurgerConstructor.module.css';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import OrderDetails from '../OrderDetails/OrdeDetails';
+import Modal from '../Modal/Modal';
+
+const OrderDetailsModal = Modal(OrderDetails);
 
 
 class BurgerConstructor extends React.Component {
+    constructor(props){
+        super(props)
+        this.setState({orderFormIsOpened: false})
+    }
 
     updateData() {
         this.data = [];
@@ -17,6 +25,10 @@ class BurgerConstructor extends React.Component {
                 }
             }
         });
+    }
+
+    openOrderInfo = () => {
+        this.setState({orderFormIsOpened: true})
     }
 
 
@@ -55,6 +67,7 @@ class BurgerConstructor extends React.Component {
                 <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`}>Оформить заказ</button>
             </div>
+            <OrderDetailsModal isOpened={this.state.orderFormIsOpened}/>
         </div>;
     }
 }

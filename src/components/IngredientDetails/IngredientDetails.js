@@ -5,12 +5,13 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 class IngredientDetails extends React.Component {
     render() {
+        /*console.log(this.props.isOpened)*/
         return (<>
             {this.props.isOpened && (
                 <div className={styles.container}>
-                    <ModalOverlay closeModal={this.props.close} />
+                    <ModalOverlay closeModal={this.props.closeModal}/>
                     <div className={styles.ingredientDetails}>
-                        <button className={styles.button} onClick={this.props.close}><CloseIcon type="primary" /></button>
+                        <button className={styles.button} onClick={this.props.closeModal}><CloseIcon type="primary" /></button>
                         <h2 className={`${styles.header} text text_type_main-large`}>Детали ингридиента</h2>
                         <img src={this.props.data.image} className={styles.img} />
                         <h3 className={`${styles.name} text text_type_main-medium`}>{this.props.data.name}</h3>

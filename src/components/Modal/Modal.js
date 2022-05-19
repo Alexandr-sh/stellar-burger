@@ -4,16 +4,11 @@ const Modal = WrappedComponent => {
     return class extends React.Component {
         constructor(props) {
             super(props);
+
             this.state = {
-                isOpened: props.isOpened
+                isOpened: false
             }
         }
-
-        close = () => {
-            this.setState({
-                isOpened: false
-            })
-        };
 
         open = () => {
             this.setState({
@@ -21,13 +16,24 @@ const Modal = WrappedComponent => {
             })
         };
 
+        
+        close = () => {
+            this.setState({
+                isOpened: false
+            })
+        };
+
+        componentDidUpdate(prevProps, prevState) {
+            if (this.props.isOpened != prevState.isOpened) this.setState({isOpened:this.props.isOpened})
+          }
+
         render() {
             return (
                 <WrappedComponent
-                    {...this.props}
-                    close={this.close}
-                    open={this.open}
-                    isOpened={this.state.isOpened}
+                    data={this.props.data}
+                    closeModal={this.close}
+                    openModal={this.open}
+                    isOpened = {this.state.isOpened}
                 />
             )
         }

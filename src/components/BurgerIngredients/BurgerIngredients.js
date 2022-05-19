@@ -4,8 +4,9 @@ import { Typography } from '@ya.praktikum/react-developer-burger-ui-components'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import ListItem from './ListItem.js';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import Modal from '../Modal/Modal';
 
-
+const IngridientsDetailsModal = Modal(IngredientDetails);
 
 class BurgerIngredients extends React.Component {
     constructor(props) {
@@ -69,7 +70,7 @@ class BurgerIngredients extends React.Component {
                     )
                 ))}
             </div>
-            <IngredientDetails data = {this.state.selectedIngridient} isOpened = {this.state.ingrFormIsOpened}/>
+            <IngridientsDetailsModal data = {this.state.selectedIngridient} isOpened={this.state.ingrFormIsOpened}/>
         </div>;
     }
 }
